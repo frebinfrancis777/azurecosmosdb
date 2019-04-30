@@ -1,0 +1,167 @@
+﻿@model List<MVCAzureCosmosDB.Models.ViewModels.CreateStateContactViewModel>
+@{
+    ViewBag.Title = "Create Office";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="jumbotron">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4 class="pull-left">@ViewBag.Title</h4>
+                            <a href="@Url.Action("Index")" class="btn btn-default pull-right">BACK</a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            @{
+                                var tempDataObject = this.TempData["response"];
+                                if (tempDataObject != null)
+                                {
+                                    var responseMessage = tempDataObject as MVCAzureCosmosDB.Models.ViewModels.ResponseViewModel;
+                                    if (responseMessage != null)
+                                    {
+                                        if (responseMessage.IsSucess)
+                                        {
+                                            <div class="alert alert-success">
+                                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                @Html.DisplayFor(model => responseMessage.Message)
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="alert alert-danger">
+                                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                @Html.DisplayFor(model => responseMessage.Message)
+                                            </div>
+                                        }
+                                    }
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="clearfix" id="divRecordArea">
+                            @for (int i = 0; i < Model.Count(); i++)
+                            {
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => Model[i].FirstName, htmlAttributes: new { @class = "control-label" })
+                                            @Html.EditorFor(model => Model[i].FirstName, new { htmlAttributes = new { @class = "form-control clsFirstName" } })
+                                            @Html.ValidationMessageFor(model => Model[i].FirstName, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => Model[i].LastName, htmlAttributes: new { @class = "control-label" })
+                                            @Html.EditorFor(model => Model[i].LastName, new { htmlAttributes = new { @class = "form-control clsLastName" } })
+                                            @Html.ValidationMessageFor(model => Model[i].LastName, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => Model[i].Phone, htmlAttributes: new { @class = "control-label" })
+                                            @Html.EditorFor(model => Model[i].Phone, new { htmlAttributes = new { @class = "form-control clsPhone" } })
+                                            @Html.ValidationMessageFor(model => Model[i].Phone, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => Model[i].State, htmlAttributes: new { @class = "control-label" })
+                                            @Html.DropDownListFor(m => Model[i].State, Model[i].States, "Select State", new { @class = "form-control clsState" })
+                                            @Html.ValidationMessageFor(model => Model[i].State, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <div class="form-group" style="margin-top:25px;">
+                                            <input type="button" class="btn btn-primary btn-sm btnAddRecord" value="+" />
+                                            <input type="button" class="btn btn-default btn-sm btnDeleteRecord" value="-" />
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <input type="submit" value="CREATE" class="btn btn-primary pull-right" />
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("form").on("click", "input[type=button].btnAddRecord", function () {
+                var element = $(this).parent("div").parent("div").parent("div.row").clone();
+                element.find("input[type=text]").val("");
+                $("#divRecordArea").append(element);
+                RenameElements();
+            });
+            $("form").on("click", "input[type=button].btnDeleteRecord", function () {
+                if ($("#divRecordArea div.row").length > 1) {
+                    var element = $(this).parent("div").parent("div").parent("div.row");
+                    element.remove();
+                    RenameElements();
+                }
+            });
+            window.setTimeout(function () {
+                $('div.alert').slideUp(500, function () {
+                    $('div.alert').remove();
+                });
+            }, 3000);
+        })
+        function RenameElements() {
+            var index = -1;
+            $("#divRecordArea div.row").each(function () {
+                index += 1;
+
+                var firstNameIndex = "[" + index + "].FirstName";
+                var lastNameIndex = "[" + index + "].LastName";
+                var phoneIndex = "[" + index + "].Phone";
+                var stateIndex = "[" + index + "].State";
+
+                var firstNameElement = $(this).find("input.clsFirstName");
+                var lastNameElement = $(this).find("input.clsLastName");
+                var phoneElement = $(this).find("input.clsPhone");
+                var stateElement = $(this).find("select.clsState");
+
+                $(firstNameElement).attr("name", firstNameIndex);
+                $(lastNameElement).attr("name", lastNameIndex);
+                $(phoneElement).attr("name", phoneIndex);
+                $(stateElement).attr("name", stateIndex);
+
+                var form = $("form")
+                    .removeData("validator")
+                    .removeData("unobtrusiveValidation");
+
+                $.validator.unobtrusive.parse(form);
+            });
+        }
+    </script>
+}
+

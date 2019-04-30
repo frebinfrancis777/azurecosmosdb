@@ -1,0 +1,133 @@
+﻿@model IEnumerable<MVCAzureCosmosDB.Models.ViewModels.OfficeListViewModel>
+@{
+    ViewBag.Title = "LIST OFFICE";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="clearfix">
+            <div class="row">
+                <div class="col-md-12">
+                    @{
+                        var tempDataObject = this.TempData["response"];
+                        if (tempDataObject != null)
+                        {
+                            var responseMessage = tempDataObject as MVCAzureCosmosDB.Models.ViewModels.ResponseViewModel;
+                            if (responseMessage != null)
+                            {
+                                if (responseMessage.IsSucess)
+                                {
+                                    <div class="alert alert-success">
+                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                        @Html.DisplayFor(model => responseMessage.Message)
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="alert alert-danger">
+                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                        @Html.DisplayFor(model => responseMessage.Message)
+                                    </div>
+                                }
+                            }
+                        }
+                    }
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h4 class="pull-left">SEARCH</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <form class="form-inline" method="post" action="@Url.Action("Index")">
+                                <div class="form-group">
+                                    <label for="email">First Name:</label>
+                                    <input type="text" value="@ViewBag.firstname" name="firstname" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="pwd">Last Name:</label>
+                                    <input type="text" value="@ViewBag.lastname" name="lastname" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="pwd">State:</label>
+                                    <input type="text" value="@ViewBag.state" name="state" class="form-control">
+                                </div>
+                                <button type="submit" class="btn btn-primary">SEARCH</button>
+                                <a href="@Url.Action("Index")" class="btn btn-default">RESET</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h4 class="pull-left">@ViewBag.Title</h4>
+                                    <a href="@Url.Action("CreateBulk")" class="btn btn-primary pull-right">CREATE NEW</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-hover table-striped">
+                                    <thead style="background-color:lightgray;">
+                                        <tr>
+                                            <th>First Name</th>
+                                            <th>Last Name</th>
+                                            <th>Phone</th>
+                                            <th>State</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if (Model == null || !Model.Any())
+                                        {
+                                            <tr>
+                                                <td colspan="4">No Records</td>
+                                            </tr>
+                                        }
+                                        else
+                                        {
+                                            foreach (var office in Model)
+                                            {
+                                                <tr>
+                                                    <th>@Html.DisplayFor(model => office.Firstname)</th>
+                                                    <th>@Html.DisplayFor(model => office.Lastname)</th>
+                                                    <th>@Html.DisplayFor(model => office.Phone)</th>
+                                                    <th>@Html.DisplayFor(model => office.State)</th>
+                                                </tr>
+                                            }
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            window.setTimeout(function () {
+                $('div.alert').slideUp(500, function () {
+                    $('div.alert').remove();
+                });
+            }, 3000);
+        });
+    </script>
+}

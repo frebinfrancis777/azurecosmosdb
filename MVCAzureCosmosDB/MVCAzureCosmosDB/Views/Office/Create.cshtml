@@ -1,0 +1,198 @@
+﻿@model MVCAzureCosmosDB.Models.ViewModels.CreateOfficeViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    if (string.IsNullOrEmpty(Model.id))
+    {
+        ViewBag.Title = "CREATE OFFICE";
+    }
+    else
+    {
+        ViewBag.Title = "EDIT OFFICE";
+    }
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="jumbotron">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4 class="pull-left">@ViewBag.Title</h4>
+                            <a href="@Url.Action("Index")" class="btn btn-default pull-right">BACK</a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            @{
+                                var tempDataObject = this.TempData["response"];
+                                if (tempDataObject != null)
+                                {
+                                    var responseMessage = tempDataObject as MVCAzureCosmosDB.Models.ViewModels.ResponseViewModel;
+                                    if (responseMessage != null)
+                                    {
+                                        if (responseMessage.IsSucess)
+                                        {
+                                            <div class="alert alert-success">
+                                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                @Html.DisplayFor(model => responseMessage.Message)
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="alert alert-danger">
+                                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                @Html.DisplayFor(model => responseMessage.Message)
+                                            </div>
+                                        }
+                                    }
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.HiddenFor(model => model.id)
+                        @Html.HiddenFor(model => model.AddMoreRecord, new { id = "hdnAddMoreRecord" })
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Firstname, htmlAttributes: new { @class = "control-label" })
+                                    @Html.EditorFor(model => model.Firstname, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Firstname, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Lastname, htmlAttributes: new { @class = "control-label" })
+                                    @Html.EditorFor(model => model.Lastname, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Lastname, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Middlename, htmlAttributes: new { @class = "control-label" })
+                                    @Html.EditorFor(model => model.Middlename, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Middlename, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.State, htmlAttributes: new { @class = "control-label" })
+                                    @Html.EditorFor(model => model.State, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.State, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.School, htmlAttributes: new { @class = "control-label" })
+                                    @Html.EditorFor(model => model.School, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.School, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Schoolyear, htmlAttributes: new { @class = "control-label" })
+                                    @Html.DropDownListFor(m => m.Schoolyear, Model.Years, "Select Year", new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Schoolyear, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Concentration, htmlAttributes: new { @class = "control-label" })
+                                    @Html.EditorFor(model => model.Concentration, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Concentration, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Degree, htmlAttributes: new { @class = "control-label" })
+                                    @Html.EditorFor(model => model.Degree, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Degree, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Degreeconcentration, htmlAttributes: new { @class = "control-label" })
+                                    @Html.EditorFor(model => model.Degreeconcentration, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Degreeconcentration, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Major, htmlAttributes: new { @class = "control-label" })
+                                    @Html.EditorFor(model => model.Major, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Major, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label" })
+                                    @Html.TextAreaFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    @if (string.IsNullOrEmpty(Model.id))
+                                    {
+                                        <input id="btnAddMore" type="button" style="margin-left:5px;" value="ADD MORE" class="btn btn-success pull-right" />
+                                        <input type="submit" value="CREATE" class="btn btn-primary pull-right" />
+                                    }
+                                    else
+                                    {
+                                        <input type="submit" value="UPDATE" class="btn btn-primary pull-right" />
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#btnAddMore").click(function () {
+                $("#hdnAddMoreRecord").val(true);
+                $("form").submit();
+            });
+            window.setTimeout(function () {
+                $('div.alert').slideUp(500, function () {
+                    $('div.alert').remove();
+                });
+            }, 3000);
+        })
+    </script>
+}
