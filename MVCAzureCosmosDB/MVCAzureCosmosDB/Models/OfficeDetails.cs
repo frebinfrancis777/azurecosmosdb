@@ -1,16 +1,17 @@
 ﻿using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace MVCAzureCosmosDB.Models
 {
     public class OfficeDetails
     {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
         [JsonProperty(PropertyName = "state")]
         public string State { get; set; }
 
+        [JsonProperty("recruitingContacts")]
         public List<Person> RecruitingContacts { get; set; }
     }
 }

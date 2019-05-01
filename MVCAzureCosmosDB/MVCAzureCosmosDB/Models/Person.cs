@@ -1,13 +1,18 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace MVCAzureCosmosDB.Models
 {
     public class Person
     {
+        public Person()
+        {
+            this.PersonID = Guid.NewGuid();
+        }
+
+        [JsonProperty(PropertyName = "personID")]
+        public Guid PersonID { get; set; }
+
         [JsonProperty(PropertyName = "firstName")]
         public string FirstName { get; set; }
 

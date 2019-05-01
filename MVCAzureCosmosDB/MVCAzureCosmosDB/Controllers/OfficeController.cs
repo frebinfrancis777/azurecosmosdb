@@ -37,7 +37,8 @@ namespace MVCAzureCosmosDB.Controllers
                                 State = office.State,
                                 Firstname = contact.FirstName,
                                 Lastname = contact.LastName,
-                                Phone = contact.Phone
+                                Phone = contact.Phone,
+                                PersonID = contact.PersonID
                             });
                         }
                     }
@@ -255,6 +256,107 @@ namespace MVCAzureCosmosDB.Controllers
             {
                 response.IsSucess = false;
                 response.Message = "Record deletion failed.";
+            }
+
+            TempData["response"] = response;
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> EditPerson(Guid id)
+        {
+            var viewModel = new EditOfficeContactViewModel();
+
+            var offices = await DocumentDBRepository<OfficeDetails>.
+                               GetItemsAsync(x => x.RecruitingContacts.Any(y => y.PersonID == id));
+
+            if (offices != null && offices.Any())
+            {
+                foreach (var office in offices)
+                {
+                    var person = office.RecruitingContacts.FirstOrDefault(x => x.PersonID == id);
+                    if (person != null)
+                    {
+                        viewModel.PrevFirstName = person.FirstName;
+                        viewModel.FirstName = person.FirstName;
+                        viewModel.LastName = person.LastName;
+                        viewModel.Phone = person.Phone;
+
+                        break;
+                    }
+                }
+            }
+
+            return this.PartialView(viewModel);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> EditPerson(EditOfficeContactViewModel viewModel)
+        {
+            var response = new ResponseViewModel();
+
+            try
+            {
+                var offices = await DocumentDBRepository<OfficeDetails>.
+                               GetItemsAsync(x => x.RecruitingContacts.Any(y => y.FirstName.ToLower() == viewModel.PrevFirstName.ToLower()));
+
+                if (offices != null && offices.Any())
+                {
+                    foreach (var office in offices)
+                    {
+                        office.RecruitingContacts
+                            .Where(x => x.FirstName.Equals(viewModel.PrevFirstName, StringComparison.OrdinalIgnoreCase))
+                            .ToList()
+                            .ForEach((person) =>
+                            {
+                                person.FirstName = viewModel.FirstName;
+                                person.LastName = viewModel.LastName;
+                                person.Phone = viewModel.Phone;
+                            });
+
+                        await DocumentDBRepository<OfficeDetails>.UpdateItemAsync(office.Id, office);
+                    }
+                }
+
+                response.IsSucess = true;
+                response.Message = "Record updated successfully.";
+            }
+            catch (Exception ex)
+            {
+                response.IsSucess = false;
+                response.Message = "Process failed...";
+            }
+
+            TempData["response"] = response;
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> DeletePerson(Guid id)
+        {
+            var response = new ResponseViewModel();
+
+            try
+            {
+                var offices = await DocumentDBRepository<OfficeDetails>.
+                               GetItemsAsync(x => x.RecruitingContacts.Any(y => y.PersonID == id));
+
+                if (offices != null && offices.Any())
+                {
+                    foreach (var office in offices)
+                    {
+                        office.RecruitingContacts.RemoveAll(x => x.PersonID == id);
+                        await DocumentDBRepository<OfficeDetails>.UpdateItemAsync(office.Id, office);
+                    }
+                }
+
+                response.IsSucess = true;
+                response.Message = "Record deleted successfully.";
+            }
+            catch (Exception)
+            {
+                response.IsSucess = false;
+                response.Message = "Process failed...";
             }
 
             TempData["response"] = response;
