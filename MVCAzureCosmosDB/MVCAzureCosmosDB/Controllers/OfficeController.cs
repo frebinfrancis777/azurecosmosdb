@@ -200,17 +200,42 @@ namespace MVCAzureCosmosDB.Controllers
 
                     foreach (var state in groupByState)
                     {
-                        await DocumentDBRepository<OfficeDetails>.CreateItemAsync(
-                        new OfficeDetails()
+                        var states = await DocumentDBRepository<OfficeDetails>.
+                               GetItemsAsync(x => x.State.ToLower() == state.Key.ToLower());
+
+                        if (states != null && states.Any())
                         {
-                            State = state.Key,
-                            RecruitingContacts = state.Select(x => new Person()
+                            foreach (var stateModel in states)
                             {
-                                FirstName = x.FirstName,
-                                LastName = x.LastName,
-                                Phone = x.Phone
-                            }).ToList()
-                        });
+                                if (stateModel.RecruitingContacts == null)
+                                {
+                                    stateModel.RecruitingContacts = new List<Person>();
+                                }
+
+                                stateModel.RecruitingContacts.AddRange(state.Select(x => new Person()
+                                {
+                                    FirstName = x.FirstName,
+                                    LastName = x.LastName,
+                                    Phone = x.Phone
+                                }));
+
+                                await DocumentDBRepository<OfficeDetails>.UpdateItemAsync(stateModel.Id, stateModel);
+                            }
+                        }
+                        else
+                        {
+                            await DocumentDBRepository<OfficeDetails>.CreateItemAsync(
+                               new OfficeDetails()
+                               {
+                                   State = state.Key,
+                                   RecruitingContacts = state.Select(x => new Person()
+                                   {
+                                       FirstName = x.FirstName,
+                                       LastName = x.LastName,
+                                       Phone = x.Phone
+                                   }).ToList()
+                               });
+                        }
                     }
 
                     response.IsSucess = true;
