@@ -16,11 +16,11 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Office", "CreateBulk", "Office", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Office", "Index", "Office", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("CreateBulk", "Create", "Office")</li>
+                    <li>@Html.ActionLink("Create", "CreateBulk", "Office")</li>
                 </ul>
                 @if (User.Identity.IsAuthenticated)
                 {

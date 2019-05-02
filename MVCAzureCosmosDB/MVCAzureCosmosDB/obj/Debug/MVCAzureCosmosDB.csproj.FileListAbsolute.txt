@@ -586,13 +586,8 @@ D:\Frebin Francis\Projects\MVCAzureCosmosDB\MVCAzureCosmosDB\obj\Debug\MVCAzureC
 D:\Frebin Francis\Projects\MVCAzureCosmosDB\MVCAzureCosmosDB\obj\Debug\MVCAzureCosmosDB.csproj.CopyComplete
 D:\Frebin Francis\Projects\MVCAzureCosmosDB\MVCAzureCosmosDB\obj\Debug\MVCAzureCosmosDB.dll
 D:\Frebin Francis\Projects\MVCAzureCosmosDB\MVCAzureCosmosDB\obj\Debug\MVCAzureCosmosDB.pdb
-D:\Frebin Francis\Git\azurecosmosdb\MVCAzureCosmosDB\MVCAzureCosmosDB\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
-D:\Frebin Francis\Git\azurecosmosdb\MVCAzureCosmosDB\MVCAzureCosmosDB\bin\roslyn\Microsoft.CodeAnalysis.dll
-D:\Frebin Francis\Git\azurecosmosdb\MVCAzureCosmosDB\MVCAzureCosmosDB\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
-D:\Frebin Francis\Git\azurecosmosdb\MVCAzureCosmosDB\MVCAzureCosmosDB\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
-D:\Frebin Francis\Git\azurecosmosdb\MVCAzureCosmosDB\MVCAzureCosmosDB\bin\roslyn\System.Collections.Immutable.dll
-D:\Frebin Francis\Git\azurecosmosdb\MVCAzureCosmosDB\MVCAzureCosmosDB\bin\roslyn\System.Reflection.Metadata.dll
-D:\Frebin Francis\Git\azurecosmosdb\MVCAzureCosmosDB\MVCAzureCosmosDB\bin\roslyn\VBCSCompiler.exe
+D:\Frebin Francis\Git\azurecosmosdb\MVCAzureCosmosDB\MVCAzureCosmosDB\bin\System.Linq.Queryable.dll
+D:\Frebin Francis\Git\azurecosmosdb\MVCAzureCosmosDB\MVCAzureCosmosDB\bin\System.Web.Optimization.xml
 D:\Frebin Francis\Git\azurecosmosdb\MVCAzureCosmosDB\MVCAzureCosmosDB\bin\Microsoft.Azure.Documents.ServiceInterop.dll
 D:\Frebin Francis\Git\azurecosmosdb\MVCAzureCosmosDB\MVCAzureCosmosDB\bin\ApplicationInsights.config
 D:\Frebin Francis\Git\azurecosmosdb\MVCAzureCosmosDB\MVCAzureCosmosDB\bin\MVCAzureCosmosDB.dll.config
@@ -605,13 +600,18 @@ D:\Frebin Francis\Git\azurecosmosdb\MVCAzureCosmosDB\MVCAzureCosmosDB\bin\roslyn
 D:\Frebin Francis\Git\azurecosmosdb\MVCAzureCosmosDB\MVCAzureCosmosDB\bin\roslyn\csi.exe.config
 D:\Frebin Francis\Git\azurecosmosdb\MVCAzureCosmosDB\MVCAzureCosmosDB\bin\roslyn\csi.rsp
 D:\Frebin Francis\Git\azurecosmosdb\MVCAzureCosmosDB\MVCAzureCosmosDB\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\Frebin Francis\Git\azurecosmosdb\MVCAzureCosmosDB\MVCAzureCosmosDB\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
 D:\Frebin Francis\Git\azurecosmosdb\MVCAzureCosmosDB\MVCAzureCosmosDB\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+D:\Frebin Francis\Git\azurecosmosdb\MVCAzureCosmosDB\MVCAzureCosmosDB\bin\roslyn\Microsoft.CodeAnalysis.dll
 D:\Frebin Francis\Git\azurecosmosdb\MVCAzureCosmosDB\MVCAzureCosmosDB\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+D:\Frebin Francis\Git\azurecosmosdb\MVCAzureCosmosDB\MVCAzureCosmosDB\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
 D:\Frebin Francis\Git\azurecosmosdb\MVCAzureCosmosDB\MVCAzureCosmosDB\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\Frebin Francis\Git\azurecosmosdb\MVCAzureCosmosDB\MVCAzureCosmosDB\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
 D:\Frebin Francis\Git\azurecosmosdb\MVCAzureCosmosDB\MVCAzureCosmosDB\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
 D:\Frebin Francis\Git\azurecosmosdb\MVCAzureCosmosDB\MVCAzureCosmosDB\bin\roslyn\Microsoft.VisualBasic.Core.targets
 D:\Frebin Francis\Git\azurecosmosdb\MVCAzureCosmosDB\MVCAzureCosmosDB\bin\roslyn\Microsoft.Win32.Primitives.dll
 D:\Frebin Francis\Git\azurecosmosdb\MVCAzureCosmosDB\MVCAzureCosmosDB\bin\roslyn\System.AppContext.dll
+D:\Frebin Francis\Git\azurecosmosdb\MVCAzureCosmosDB\MVCAzureCosmosDB\bin\roslyn\System.Collections.Immutable.dll
 D:\Frebin Francis\Git\azurecosmosdb\MVCAzureCosmosDB\MVCAzureCosmosDB\bin\roslyn\System.Console.dll
 D:\Frebin Francis\Git\azurecosmosdb\MVCAzureCosmosDB\MVCAzureCosmosDB\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
 D:\Frebin Francis\Git\azurecosmosdb\MVCAzureCosmosDB\MVCAzureCosmosDB\bin\roslyn\System.Diagnostics.Process.dll
@@ -621,6 +621,7 @@ D:\Frebin Francis\Git\azurecosmosdb\MVCAzureCosmosDB\MVCAzureCosmosDB\bin\roslyn
 D:\Frebin Francis\Git\azurecosmosdb\MVCAzureCosmosDB\MVCAzureCosmosDB\bin\roslyn\System.IO.FileSystem.DriveInfo.dll
 D:\Frebin Francis\Git\azurecosmosdb\MVCAzureCosmosDB\MVCAzureCosmosDB\bin\roslyn\System.IO.FileSystem.Primitives.dll
 D:\Frebin Francis\Git\azurecosmosdb\MVCAzureCosmosDB\MVCAzureCosmosDB\bin\roslyn\System.IO.Pipes.dll
+D:\Frebin Francis\Git\azurecosmosdb\MVCAzureCosmosDB\MVCAzureCosmosDB\bin\roslyn\System.Reflection.Metadata.dll
 D:\Frebin Francis\Git\azurecosmosdb\MVCAzureCosmosDB\MVCAzureCosmosDB\bin\roslyn\System.Security.AccessControl.dll
 D:\Frebin Francis\Git\azurecosmosdb\MVCAzureCosmosDB\MVCAzureCosmosDB\bin\roslyn\System.Security.Claims.dll
 D:\Frebin Francis\Git\azurecosmosdb\MVCAzureCosmosDB\MVCAzureCosmosDB\bin\roslyn\System.Security.Cryptography.Algorithms.dll
@@ -638,6 +639,7 @@ D:\Frebin Francis\Git\azurecosmosdb\MVCAzureCosmosDB\MVCAzureCosmosDB\bin\roslyn
 D:\Frebin Francis\Git\azurecosmosdb\MVCAzureCosmosDB\MVCAzureCosmosDB\bin\roslyn\vbc.exe
 D:\Frebin Francis\Git\azurecosmosdb\MVCAzureCosmosDB\MVCAzureCosmosDB\bin\roslyn\vbc.exe.config
 D:\Frebin Francis\Git\azurecosmosdb\MVCAzureCosmosDB\MVCAzureCosmosDB\bin\roslyn\vbc.rsp
+D:\Frebin Francis\Git\azurecosmosdb\MVCAzureCosmosDB\MVCAzureCosmosDB\bin\roslyn\VBCSCompiler.exe
 D:\Frebin Francis\Git\azurecosmosdb\MVCAzureCosmosDB\MVCAzureCosmosDB\bin\roslyn\VBCSCompiler.exe.config
 D:\Frebin Francis\Git\azurecosmosdb\MVCAzureCosmosDB\MVCAzureCosmosDB\bin\Microsoft.Win32.Primitives.dll
 D:\Frebin Francis\Git\azurecosmosdb\MVCAzureCosmosDB\MVCAzureCosmosDB\bin\netstandard.dll
@@ -680,7 +682,6 @@ D:\Frebin Francis\Git\azurecosmosdb\MVCAzureCosmosDB\MVCAzureCosmosDB\bin\System
 D:\Frebin Francis\Git\azurecosmosdb\MVCAzureCosmosDB\MVCAzureCosmosDB\bin\System.Linq.dll
 D:\Frebin Francis\Git\azurecosmosdb\MVCAzureCosmosDB\MVCAzureCosmosDB\bin\System.Linq.Expressions.dll
 D:\Frebin Francis\Git\azurecosmosdb\MVCAzureCosmosDB\MVCAzureCosmosDB\bin\System.Linq.Parallel.dll
-D:\Frebin Francis\Git\azurecosmosdb\MVCAzureCosmosDB\MVCAzureCosmosDB\bin\System.Linq.Queryable.dll
 D:\Frebin Francis\Git\azurecosmosdb\MVCAzureCosmosDB\MVCAzureCosmosDB\bin\System.Net.Http.dll
 D:\Frebin Francis\Git\azurecosmosdb\MVCAzureCosmosDB\MVCAzureCosmosDB\bin\System.Net.NameResolution.dll
 D:\Frebin Francis\Git\azurecosmosdb\MVCAzureCosmosDB\MVCAzureCosmosDB\bin\System.Net.NetworkInformation.dll
@@ -767,7 +768,6 @@ D:\Frebin Francis\Git\azurecosmosdb\MVCAzureCosmosDB\MVCAzureCosmosDB\bin\LinqKi
 D:\Frebin Francis\Git\azurecosmosdb\MVCAzureCosmosDB\MVCAzureCosmosDB\bin\System.Collections.Immutable.xml
 D:\Frebin Francis\Git\azurecosmosdb\MVCAzureCosmosDB\MVCAzureCosmosDB\bin\System.Web.Helpers.xml
 D:\Frebin Francis\Git\azurecosmosdb\MVCAzureCosmosDB\MVCAzureCosmosDB\bin\System.Web.Mvc.xml
-D:\Frebin Francis\Git\azurecosmosdb\MVCAzureCosmosDB\MVCAzureCosmosDB\bin\System.Web.Optimization.xml
 D:\Frebin Francis\Git\azurecosmosdb\MVCAzureCosmosDB\MVCAzureCosmosDB\bin\System.Web.Razor.xml
 D:\Frebin Francis\Git\azurecosmosdb\MVCAzureCosmosDB\MVCAzureCosmosDB\bin\System.Web.WebPages.xml
 D:\Frebin Francis\Git\azurecosmosdb\MVCAzureCosmosDB\MVCAzureCosmosDB\bin\System.Web.WebPages.Deployment.xml
@@ -784,4 +784,3 @@ D:\Frebin Francis\Git\azurecosmosdb\MVCAzureCosmosDB\MVCAzureCosmosDB\obj\Debug\
 D:\Frebin Francis\Git\azurecosmosdb\MVCAzureCosmosDB\MVCAzureCosmosDB\obj\Debug\MVCAzureCosmosDB.csproj.CopyComplete
 D:\Frebin Francis\Git\azurecosmosdb\MVCAzureCosmosDB\MVCAzureCosmosDB\obj\Debug\MVCAzureCosmosDB.dll
 D:\Frebin Francis\Git\azurecosmosdb\MVCAzureCosmosDB\MVCAzureCosmosDB\obj\Debug\MVCAzureCosmosDB.pdb
-D:\Frebin Francis\Git\azurecosmosdb\MVCAzureCosmosDB\MVCAzureCosmosDB\obj\Debug\MVCAzureCosmosDB.csprojAssemblyReference.cache
