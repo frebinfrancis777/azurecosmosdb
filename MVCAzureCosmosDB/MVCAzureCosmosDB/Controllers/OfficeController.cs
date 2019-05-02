@@ -38,7 +38,6 @@ namespace MVCAzureCosmosDB.Controllers
                                 Firstname = contact.FirstName,
                                 Lastname = contact.LastName,
                                 Phone = contact.Phone,
-                                PersonID = contact.PersonID
                             });
                         }
                     }
@@ -288,18 +287,18 @@ namespace MVCAzureCosmosDB.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult> EditPerson(Guid id)
+        public async Task<ActionResult> EditPerson(string firstName)
         {
             var viewModel = new EditOfficeContactViewModel();
 
             var offices = await DocumentDBRepository<OfficeDetails>.
-                               GetItemsAsync(x => x.RecruitingContacts.Any(y => y.PersonID == id));
+                               GetItemsAsync(x => x.RecruitingContacts.Any(y => y.FirstName == firstName));
 
             if (offices != null && offices.Any())
             {
                 foreach (var office in offices)
                 {
-                    var person = office.RecruitingContacts.FirstOrDefault(x => x.PersonID == id);
+                    var person = office.RecruitingContacts.FirstOrDefault(x => x.FirstName == firstName);
                     if (person != null)
                     {
                         viewModel.PrevFirstName = person.FirstName;
@@ -357,20 +356,20 @@ namespace MVCAzureCosmosDB.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult> DeletePerson(Guid id)
+        public async Task<ActionResult> DeletePerson(string firstName, string state)
         {
             var response = new ResponseViewModel();
 
             try
             {
                 var offices = await DocumentDBRepository<OfficeDetails>.
-                               GetItemsAsync(x => x.RecruitingContacts.Any(y => y.PersonID == id));
+                               GetItemsAsync(x => x.State.ToLower() == state.ToLower() && x.RecruitingContacts.Any(y => y.FirstName.ToLower() == firstName.ToLower()));
 
                 if (offices != null && offices.Any())
                 {
                     foreach (var office in offices)
                     {
-                        office.RecruitingContacts.RemoveAll(x => x.PersonID == id);
+                        office.RecruitingContacts.RemoveAll(x => x.FirstName.ToLower() == firstName.ToLower());
                         await DocumentDBRepository<OfficeDetails>.UpdateItemAsync(office.Id, office);
                     }
                 }

@@ -108,8 +108,8 @@
                                                     <th>@Html.DisplayFor(model => office.Phone)</th>
                                                     <th>@Html.DisplayFor(model => office.State)</th>
                                                     <th>
-                                                        <a class="EditPerson" href="@Url.Action("EditPerson",new { id = office.PersonID })">Edit</a>&nbsp;|&nbsp;
-                                                        <a class="deletePerson" href="@Url.Action("DeletePerson",new { id = office.PersonID })">Delete</a>
+                                                        <a class="EditPerson" href="@Url.Action("EditPerson",new { firstName = office.Firstname })">Edit</a>&nbsp;|&nbsp;
+                                                        <a class="deletePerson" href="@Url.Action("DeletePerson",new { firstName = office.Firstname, state = office.State })">Delete</a>
                                                     </th>
                                                 </tr>
                                             }

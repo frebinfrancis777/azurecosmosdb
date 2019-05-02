@@ -9,8 +9,6 @@ namespace MVCAzureCosmosDB.Models.ViewModels
     {
         public string Id { get; set; }
 
-        public Guid PersonID { get; set; }
-
         public string Firstname { get; set; }
 
         public string Lastname { get; set; }

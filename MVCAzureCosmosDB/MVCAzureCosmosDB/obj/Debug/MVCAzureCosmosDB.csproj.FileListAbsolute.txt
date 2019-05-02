@@ -784,3 +784,4 @@ D:\Frebin Francis\Git\azurecosmosdb\MVCAzureCosmosDB\MVCAzureCosmosDB\obj\Debug\
 D:\Frebin Francis\Git\azurecosmosdb\MVCAzureCosmosDB\MVCAzureCosmosDB\obj\Debug\MVCAzureCosmosDB.csproj.CopyComplete
 D:\Frebin Francis\Git\azurecosmosdb\MVCAzureCosmosDB\MVCAzureCosmosDB\obj\Debug\MVCAzureCosmosDB.dll
 D:\Frebin Francis\Git\azurecosmosdb\MVCAzureCosmosDB\MVCAzureCosmosDB\obj\Debug\MVCAzureCosmosDB.pdb
+D:\Frebin Francis\Git\azurecosmosdb\MVCAzureCosmosDB\MVCAzureCosmosDB\obj\Debug\MVCAzureCosmosDB.csprojAssemblyReference.cache
