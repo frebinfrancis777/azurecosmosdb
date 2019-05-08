@@ -212,13 +212,16 @@ namespace MVCAzureCosmosDB.Controllers
                                     stateModel.RecruitingContacts = new List<Person>();
                                 }
 
-                                stateModel.RecruitingContacts.AddRange(state.Select(x => new Person()
+                                var contacts = stateModel.RecruitingContacts;
+                                contacts.AddRange(state.Select(x => new Person()
                                 {
                                     Order = x.Order,
                                     FirstName = x.FirstName,
                                     LastName = x.LastName,
                                     Phone = x.Phone
-                                }).OrderBy(x => x.Order));
+                                }));
+
+                                stateModel.RecruitingContacts = contacts.OrderBy(x => x.Order).ToList();
 
                                 await DocumentDBRepository<OfficeDetails>.UpdateItemAsync(stateModel.Id, stateModel);
                             }
