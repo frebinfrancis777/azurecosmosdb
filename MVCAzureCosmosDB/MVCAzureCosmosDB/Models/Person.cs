@@ -5,6 +5,9 @@ namespace MVCAzureCosmosDB.Models
 {
     public class Person
     {
+        [JsonProperty(PropertyName = "order")]
+        public int Order { get; set; }
+
         [JsonProperty(PropertyName = "firstName")]
         public string FirstName { get; set; }
 

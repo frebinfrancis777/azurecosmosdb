@@ -17,6 +17,10 @@ namespace MVCAzureCosmosDB.Models.ViewModels
         public string State { get; set; }
 
         [Required]
+        [DisplayName("Order")]
+        public int Order { get; set; }
+
+        [Required]
         [DisplayName("First Name")]
         public string FirstName { get; set; }
 

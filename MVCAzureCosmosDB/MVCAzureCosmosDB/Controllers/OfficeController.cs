@@ -34,6 +34,7 @@ namespace MVCAzureCosmosDB.Controllers
                         {
                             list.Add(new OfficeListViewModel()
                             {
+                                Order = contact.Order,
                                 State = office.State,
                                 Firstname = contact.FirstName,
                                 Lastname = contact.LastName,
@@ -45,7 +46,7 @@ namespace MVCAzureCosmosDB.Controllers
             }
 
             var predicate = GenerateWhereFilter(firstname, lastname, state);
-            var filteredList = list.Where(predicate);
+            var filteredList = list.Where(predicate).OrderBy(x => x.State).ThenBy(x => x.Order);
 
             return View(filteredList);
         }
@@ -213,10 +214,11 @@ namespace MVCAzureCosmosDB.Controllers
 
                                 stateModel.RecruitingContacts.AddRange(state.Select(x => new Person()
                                 {
+                                    Order = x.Order,
                                     FirstName = x.FirstName,
                                     LastName = x.LastName,
                                     Phone = x.Phone
-                                }));
+                                }).OrderBy(x => x.Order));
 
                                 await DocumentDBRepository<OfficeDetails>.UpdateItemAsync(stateModel.Id, stateModel);
                             }
@@ -229,10 +231,11 @@ namespace MVCAzureCosmosDB.Controllers
                                    State = state.Key,
                                    RecruitingContacts = state.Select(x => new Person()
                                    {
+                                       Order = x.Order,
                                        FirstName = x.FirstName,
                                        LastName = x.LastName,
                                        Phone = x.Phone
-                                   }).ToList()
+                                   }).OrderBy(x => x.Order).ToList()
                                });
                         }
                     }

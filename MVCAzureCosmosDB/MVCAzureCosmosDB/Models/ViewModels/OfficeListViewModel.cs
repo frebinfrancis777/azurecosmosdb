@@ -6,6 +6,9 @@ namespace MVCAzureCosmosDB.Models.ViewModels
     {
         public string Id { get; set; }
 
+        [DisplayName("Order")]
+        public int Order { get; set; }
+
         [DisplayName("First Name")]
         public string Firstname { get; set; }
 
